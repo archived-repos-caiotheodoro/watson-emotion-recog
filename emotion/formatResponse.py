@@ -1,6 +1,4 @@
 
-def format_response(emotions):
-    formatted = ""
-    for emotion, score in emotions.items():
-        formatted += f"{emotion.capitalize()}: {score*100:.2f}%, "
-    return formatted[:-2]
+def format_response(emotions,dominant_emotion):
+    emotions['dominant_emotion'] = dominant_emotion
+    return emotions
