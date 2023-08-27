@@ -1,1 +1,1 @@
-# Repository for final project
+# Repositório de uso do IBM Watson para reconhecimento de emoções a partir de textos
