@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 from ibm_cloud_sdk_core.api_exception import ApiException
-from emotion.emotion_detection import analyze_emotion
+from emotion.emotion_detection import emotion_detector
 from emotion.formatResponse import format_response
 
 app = Flask(__name__)
@@ -12,7 +12,7 @@ def index():
 @app.route('/analyze_emotion', methods=['POST'])
 def analyze_emotion_route():
     text_to_analyze = request.json.get('text')
-    emotions,_ = analyze_emotion(text_to_analyze)
+    emotions,_ = emotion_detector(text_to_analyze)
     return jsonify(format_response(emotions))
 
 @app.route('/emotionDetector', methods=['GET'])
@@ -27,7 +27,7 @@ def emotion_detector():
         return jsonify(response), 400
 
     try:
-        emotions,_ = analyze_emotion(text_to_analyze)
+        emotions,_ = emotion_detector(text_to_analyze)
     except ApiException as api_exception:
         if "not enough text for language id" in str(api_exception):
             response = {

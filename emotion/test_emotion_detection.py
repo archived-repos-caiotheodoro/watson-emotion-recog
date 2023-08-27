@@ -1,5 +1,5 @@
 import unittest
-from emotion_detection import analyze_emotion
+from emotion_detection import emotion_detector
 
 
 testCases  = [
@@ -13,7 +13,7 @@ class TestSentimentAnalyzer(unittest.TestCase):
     def test_sentiment_analyzer(self):
         for text, expected in testCases:
             with self.subTest(text=text, expected=expected):
-                _, dominant_emotion = analyze_emotion(text)
+                _, dominant_emotion = emotion_detector(text)
                 self.assertEqual(dominant_emotion, expected)
 
 if __name__ == '__main__':

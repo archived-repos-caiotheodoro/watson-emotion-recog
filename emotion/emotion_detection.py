@@ -4,7 +4,7 @@
 from emotion.setup import instanciate_watson
 
 
-def analyze_emotion(text_to_analyze):
+def emotion_detector(text_to_analyze):
     
     nlu, features = instanciate_watson()
 
